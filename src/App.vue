@@ -14,7 +14,9 @@
           <ul class="todo-tasks">
             <li v-for="(item,index) in todoTasks" :key="index">
               <input type="checkbox" >
-              {{ item.value}}
+              <input type="text" v-model = item.value :disabled="item.isDisabled"
+                     @keyup.enter="handleEditInputEnter(item,$event.target.value)">
+              <button @click="editTask(item)"> edit </button>
             </li>
           </ul>
         </div>
@@ -23,7 +25,9 @@
           <ul class="completed-tasks">
             <li v-for="(item,index) in completedTasks" :key="index">
               <input type="checkbox" checked>
-              {{ item.value }}
+              <input type="text" v-model = item.value  :disabled="item.isDisabled"
+                     @keyup.enter="handleEditInputEnter(item,$event.target.value)">
+              <button @click="editTask(item)"> edit </button>
             </li>
           </ul>
         </div>
@@ -33,15 +37,15 @@
 </template>
 
 <script>
-
+import { nanoid } from "nanoid";
 export default {
   name: 'App',
   data:function(){
     return {
       tasksArr: [
-        {  value: "001", done: false },
-        {  value: "002", done: false },
-        {  value: "003", done: true },
+        { id:'1', value: "001", done: false,isDisabled:true},
+        { id:'2', value: "002", done: false,isDisabled:true},
+        { id:'3', value: "003", done: true,isDisabled:true },
       ],
       addInputValue:'',
     }
@@ -56,9 +60,18 @@ export default {
   },
   methods:{
     addTask:function(value){
-      const newTodo = {value,done:false};
+      const newTodo = {id:nanoid(),value,done:false,isDisabled:true};
       this.tasksArr.push(newTodo);
       this.addInputValue='';
+    },
+    editTask:function (item){
+     const index = this.tasksArr.indexOf(item);
+     this.tasksArr[index].isDisabled=false;
+    },
+    handleEditInputEnter:function(item,value){
+      const index = this.tasksArr.indexOf(item);
+      this.tasksArr[index].value=value;
+      this.tasksArr[index].isDisabled=true;
     }
   }
 
