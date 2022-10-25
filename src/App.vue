@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="header">
-      <input type="text" placeholder="请添加任务，完成后按回车">
+      <input type="text" placeholder="请添加任务，完成后按回车" v-model="addInputValue" @keyup.enter="addTask($event.target.value)">
+      <span>{{addInputValue}}</span>
     </div>
     <div class="content-body">
       <div class="left-nav">
@@ -39,10 +40,11 @@ export default {
   data:()=>{
     return {
       tasksArr: [
-        { id: "001", value: "001", done: false },
-        { id: "002", value: "002", done: false },
-        { id: "003", value: "003", done: true },
+        {  value: "001", done: false },
+        {  value: "002", done: false },
+        {  value: "003", done: true },
       ],
+      addInputValue:'',
     }
   },
   computed:{
@@ -52,6 +54,13 @@ export default {
     completedTasks:function(){
       return this.tasksArr.filter(task=>task.done===true)
     },
+  },
+  methods:{
+    addTask:function(value){
+      const newTodo = {value,done:false};
+      this.todoTasks.push(newTodo);
+      this.addInputValue='';
+    }
   }
 
 }
