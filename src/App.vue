@@ -2,10 +2,7 @@
   <div id="app">
     <MyHeader :addTask="addTask" />
     <div class="content-body">
-      <div class="left-nav">
-        <button>todo</button>
-        <button>completed</button>
-      </div>
+     <LeftNav />
       <div class="right-content">
         <div class="todo-tasks-wrapper">
           <span>这是待完成tasks</span>
@@ -40,9 +37,10 @@
 <script>
 import { nanoid } from "nanoid";
 import MyHeader from "@/components/MyHeader";
+import LeftNav from "@/components/LeftNav";
 export default {
   name: 'App',
-  components: {MyHeader},
+  components: {LeftNav, MyHeader},
   data:function(){
     return {
       tasksArr: [
@@ -92,13 +90,7 @@ export default {
     display: flex;
     flex-direction: row;
     height: 600px;
-    .left-nav{
-      padding-top: 20px;
-      width: 180px;
-      background-color: salmon;
-      display: flex;
-      flex-direction: column;
-    }
+
     .right-content{
       padding-left: 200px;
       flex: 1;
