@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <div class="header">
-      <input type="text" placeholder="请添加任务，完成后按回车" v-model="addInputValue" @keyup.enter="addTask($event.target.value)">
-    </div>
+    <MyHeader :addTask="addTask" />
     <div class="content-body">
       <div class="left-nav">
         <button>todo</button>
@@ -41,8 +39,10 @@
 
 <script>
 import { nanoid } from "nanoid";
+import MyHeader from "@/components/MyHeader";
 export default {
   name: 'App',
+  components: {MyHeader},
   data:function(){
     return {
       tasksArr: [
@@ -50,7 +50,6 @@ export default {
         { id:'2', value: "002", done: false,isDisabled:true},
         { id:'3', value: "003", done: true,isDisabled:true },
       ],
-      addInputValue:'',
     }
   },
   computed:{
@@ -65,7 +64,6 @@ export default {
     addTask:function(value){
       const newTodo = {id:nanoid(),value,done:false,isDisabled:true};
       this.tasksArr.push(newTodo);
-      this.addInputValue='';
     },
     editTask:function (item){
      const index = this.tasksArr.indexOf(item);
@@ -89,15 +87,7 @@ export default {
 #app{
   display: flex;
   flex-direction: column;
-  .header{
-    width: 100%;
-    background-color: aqua;
-    height:40px;
-    input{
-      width:220px;
-      margin-top: 10px;
-    }
-  }
+
   .content-body{
     display: flex;
     flex-direction: row;
