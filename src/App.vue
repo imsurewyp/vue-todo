@@ -2,10 +2,11 @@
   <div id="app">
     <MyHeader :addTask="addTask" />
     <div class="content-body">
-     <LeftNav />
+      <LeftNav />
       <div class="right-content">
-      <RightContent :todoTasks="todoTasks" :completedTasks="completedTasks"
-      :editTask="editTask" :handleEditInputEnter="handleEditInputEnter" :handleDeleteTask="handleDeleteTask"/>
+        <RightContent :todoTasks="todoTasks" :completedTasks="completedTasks"
+                      :editTask="editTask" :handleEditInputEnter="handleEditInputEnter"
+                      :handleDeleteTask="handleDeleteTask"/>
       </div>
     </div>
   </div>
@@ -68,11 +69,10 @@ export default {
     display: flex;
     flex-direction: row;
     height: 600px;
-
     .right-content{
       padding-left: 200px;
       flex: 1;
-      background-color: bisque;
+      background-color: silver;
     }
   }
 }

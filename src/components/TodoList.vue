@@ -1,6 +1,7 @@
 <template>
   <div class="todo-tasks-wrapper">
     <span>这是待完成tasks</span>
+    <slot> </slot>
     <ul class="todo-tasks">
       <li v-for="(item) in todoTasks" :key="item.id">
         <!-- key值为index时在toggle过程中出现bug，不理解-->

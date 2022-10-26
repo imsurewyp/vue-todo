@@ -1,5 +1,5 @@
 <template>
-  <div class="right-content">
+  <div >
     <TodoList :todoTasks="todoTasks" :editTask="editTask"
               :handleEditInputEnter="handleEditInputEnter"
               :handleDeleteTask="handleDeleteTask"></TodoList>
@@ -15,7 +15,7 @@ import CompletedList from "@/components/CompletedList";
 export default {
   name: "right-content",
   props:['todoTasks','completedTasks','editTask','handleEditInputEnter','handleDeleteTask'],
-  components: {CompletedList, TodoList},
+  components: { CompletedList, TodoList},
 };
 </script>
 
