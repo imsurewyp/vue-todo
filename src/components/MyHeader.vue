@@ -5,15 +5,20 @@
 </template>
 
 <script>
+import {nanoid} from "nanoid";
+
 export default {
   name: "my-header",
-  props: ["addTask"],
   data() {
     return {
       addInputValue:'',
     };
   },
   methods:{
+    addTask:function(value){
+      const newTodo = {id:nanoid(),value,done:false,isDisabled:true};
+      this.$store.state.tasksArr.push(newTodo);
+    },
     handleEnter:function(){
       this.addTask(this.addInputValue);
       this.addInputValue='';
