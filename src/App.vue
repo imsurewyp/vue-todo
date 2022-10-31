@@ -16,6 +16,7 @@
 import MyHeader from "@/components/MyHeader";
 import LeftNav from "@/components/LeftNav";
 import RightContent from "@/components/RightContent";
+
 export default {
   name: 'App',
   components: {RightContent, LeftNav, MyHeader},
@@ -25,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 $content-height: 600px;
-$padding: 500px;
+$padding: 100px;
 
 @mixin display-style($display:flex,$direction:column){
   display: $display;

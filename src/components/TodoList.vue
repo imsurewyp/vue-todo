@@ -3,9 +3,7 @@
     <span>这是待完成tasks</span>
     <ul class="todo-tasks">
       <li v-for="(item) in todoTasks" :key="item.id">
-
-        <!-- key值为index时在toggle过程中出现bug，不理解-->
-        <input type="checkbox" v-bind:checked="item.done" v-on:change="handleChange(item)">
+        <input type="checkbox" v-bind:checked="item.done" v-on:change="handleChange(item)" >
         <input type="text"
                :value="item.value"
                @input="updateInput(item,$event.target.value)"
