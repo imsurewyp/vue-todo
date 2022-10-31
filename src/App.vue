@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-        <MyHeader  />
+    <MyHeader  />
     <div class="content-body">
       <LeftNav >
         <span>通过点击查看todo或completed列表</span>
@@ -24,16 +24,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$content-height: 600px;
+$padding: 500px;
+
+@mixin display-style($display:flex,$direction:column){
+  display: $display;
+  flex-direction: $direction;
+  @content;
+}
+
 #app{
-  display: flex;
-  flex-direction: column;
+  @include display-style;
 
   .content-body{
-    display: flex;
-    flex-direction: row;
-    height: 600px;
+    @include display-style($direction:row){
+      height: $content-height;
+    };
     .right-content{
-      padding-left: 200px;
+      padding-left: $padding;
       flex: 1;
       background-color: silver;
     }

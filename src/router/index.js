@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import TodoList from "@/components/TodoList";
 import CompletedList from "@/components/CompletedList";
+import Init from "@/components/Init";
 
 Vue.use(Router)
 export default new Router({
@@ -11,7 +12,7 @@ export default new Router({
         {
             path:'/',
             name:'init',
-            component:TodoList
+            component:Init
         },
         {
             path:'/todo',
