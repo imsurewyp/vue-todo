@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {nanoid} from "nanoid";
-import {findIndex} from "lodash";
+import {filter, findIndex, remove} from "lodash";
 
 
 Vue.use(Vuex);
@@ -16,10 +16,11 @@ export  const store = new Vuex.Store({
     },
     getters:{
         completedTasks(state){
-            return state.tasksArr.filter(task=>task.done===true)
+            return filter(state.tasksArr, ['done', true])
         },
         todoTasks(state){
-            return state.tasksArr.filter(task=>task.done===false)
+            return filter(state.tasksArr, ['done', false])
+
         },
     },
     mutations:{
@@ -37,7 +38,10 @@ export  const store = new Vuex.Store({
         },
         handleDeleteTask:function(state,item){
             const index = findIndex(state.tasksArr, item);
-            state.tasksArr.splice(index,1)
+            state.tasksArr.splice(index,1);
+            //为啥这种页面不能自动渲染呢
+            // remove(state.tasksArr,item)
+            console.log(state.tasksArr)
         },
         handleTaskState:function(state,item){
             const index = findIndex(state.tasksArr, item);
