@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {nanoid} from "nanoid";
+import {findIndex} from "lodash";
 
 
 Vue.use(Vuex);
@@ -27,24 +28,23 @@ export  const store = new Vuex.Store({
             state.tasksArr.push(newTodo);
         },
         editTask:function (state,item){
-            const index = state.tasksArr.indexOf(item);
+            const index = findIndex(state.tasksArr, item)
             state.tasksArr[index].isDisabled=false;
         },
         handleEditInputEnter:function(state,payload){
-            const index = state.tasksArr.indexOf(payload.item);
-            // state.tasksArr[index].value=payload.value;
+            const index = findIndex(state.tasksArr, payload.item);
             state.tasksArr[index].isDisabled=true;
         },
         handleDeleteTask:function(state,item){
-            const index = state.tasksArr.indexOf(item);
+            const index = findIndex(state.tasksArr, item);
             state.tasksArr.splice(index,1)
         },
         handleTaskState:function(state,item){
-            const index = state.tasksArr.indexOf(item);
+            const index = findIndex(state.tasksArr, item);
             state.tasksArr[index].done=!state.tasksArr[index].done;
         },
         handleInputValueUpdate:function(state,payload){
-            const index = state.tasksArr.indexOf(payload.item);
+            const index = findIndex(state.tasksArr, payload.item);
             state.tasksArr[index].value=payload.value;
         }
     }
