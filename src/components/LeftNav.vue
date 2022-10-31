@@ -1,5 +1,6 @@
 <template>
   <div class="left-nav">
+    <slot></slot>
     <button>todo</button>
     <button>completed</button>
   </div>

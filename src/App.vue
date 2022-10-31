@@ -2,7 +2,9 @@
   <div id="app">
         <MyHeader  />
     <div class="content-body">
-        <LeftNav />
+      <LeftNav >
+        <span>通过点击查看todo或completed列表</span>
+      </LeftNav>
       <div class="right-content">
         <RightContent/>
       </div>
