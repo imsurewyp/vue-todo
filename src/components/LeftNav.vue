@@ -1,14 +1,17 @@
 <template>
   <div class="left-nav">
     <slot></slot>
-    <button>todo</button>
-    <button>completed</button>
+    <router-link to="/todo">todo</router-link>
+    <router-link to="/completed">completed</router-link>
   </div>
 </template>
 
 <script>
+
+
 export default {
   name: "left-nav",
+
 };
 </script>
 
