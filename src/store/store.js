@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {nanoid} from "nanoid";
-import {filter, findIndex, remove} from "lodash";
+import {filter, findIndex} from "lodash";
 
 
 Vue.use(Vuex);
